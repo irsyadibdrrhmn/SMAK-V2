@@ -7,7 +7,7 @@
             <div class="slider-slide absolute inset-0 transition-opacity duration-500 ease-in-out opacity-0"
                  data-slide-index="{{ $index }}">
                 <img src="{{ Storage::url($slide->thumbnail) }}" 
-                     alt="Slide {{ $index + 1 }}"
+                     alt="{{ $slide->title ?? $slide->name ?? 'Slide ' . ($index + 1) }}"
                      class="w-full h-full object-cover">
                 
                 <!-- Overlay -->
@@ -15,16 +15,20 @@
                 
                 <!-- Content -->
                 <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-4 md:px-8">
+                    @php
+                        $slideDescription = $slide->description
+                            ?? (\Illuminate\Support\Str::limit(strip_tags($slide->content ?? ''), 140) ?: 'Unggul dalam akademik, berkarakter Injili, toleran dan kreatif');
+                    @endphp
                     <h2 class="text-3xl md:text-5xl font-bold mb-3 drop-shadow-lg">
-                        {{ $slide->title ?? 'Welcome to SMAK Seminari Yohanes' }}
+                        {{ $slide->title ?? $slide->name ?? 'Welcome to SMAK Seminari Yohanes' }}
                     </h2>
                     <p class="text-lg md:text-xl mb-6 max-w-2xl drop-shadow-lg">
-                        {{ $slide->description ?? 'Unggul dalam akademik, berkarakter Injili, toleran dan kreatif' }}
+                        {{ $slideDescription }}
                     </p>
-                    @if($slide->link)
-                        <a href="{{ $slide->link }}" 
+                    @if($slide->link || $slide->slug)
+                        <a href="{{ $slide->link ?? route('front.details', $slide->slug) }}" 
                            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 drop-shadow-lg">
-                            Tentang Sekolah
+                            {{ $slide->link ? 'Tentang Sekolah' : 'Baca Selengkapnya' }}
                         </a>
                     @endif
                 </div>
