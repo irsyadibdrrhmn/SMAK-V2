@@ -1,33 +1,28 @@
-<nav id="Navbar" class="max-w-[1130px] mx-auto flex justify-between items-center mt-[30px]">
-		<div class="logo-container flex gap-[30px] items-center">
-			<a href="{{route('front.index')}}" class="flex shrink-0">
-				<img src="{{asset('assets/images/logos/logo.svg')}}" alt="logo" />
-			</a>
-			<div class="h-12 border border-[#E8EBF4]"></div>
-			<form method="GET" action="{{route('front.search')}}"
-				class="w-[450px] flex items-center rounded-full border border-[#E8EBF4] p-[12px_20px] gap-[10px] focus-within:ring-2 focus-within:ring-[#FF6B18] transition-all duration-300">
-				
-			@csrf
+<nav id="Navbar" class="max-w-[1130px] mx-auto flex flex-wrap justify-between items-center gap-4 mt-[30px]">
+    <div class="logo-container flex gap-5 items-center">
+        <a href="{{ route('front.index') }}" class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-[#0D3B66] text-white flex items-center justify-center font-bold">SY</div>
+            <div>
+                <p class="font-bold text-[#0D3B66] leading-tight">SMAK Seminari Yohanes</p>
+                <p class="text-xs text-[#6C7A89]">School Website & News Portal</p>
+            </div>
+        </a>
+    </div>
 
-				
-				<button type="submit" class="w-5 h-5 flex shrink-0">
-					<img src="{{asset('assets/images/icons/search-normal.svg')}}" alt="icon" />
-				</button>
-				<input type="text" name="keyword" id=""
-					class="appearance-none outline-none w-full font-semibold placeholder:font-normal placeholder:text-[#A3A6AE]"
-					placeholder="Search hot trendy news today..." />
-			</form>
-		</div>
-		<div class="flex items-center gap-3">
-			<a href=""
-				class="rounded-full p-[12px_22px] flex gap-[10px] font-semibold transition-all duration-300 border border-[#EEF0F7] hover:ring-2 hover:ring-[#FF6B18]">Upgrade
-				Premium</a>
-			<a href=""
-				class="rounded-full p-[12px_22px] flex gap-[10px] font-bold transition-all duration-300 bg-[#FF6B18] text-white hover:shadow-[0_10px_20px_0_#FF6B1880]">
-				<div class="w-6 h-6 flex shrink-0">
-					<img src="{{asset('assets/images/icons/favorite-chart.svg')}}" alt="icon" />
-				</div>
-				<span>Post Ads Now!</span>
-			</a>
-		</div>
-	</nav>
+    <div class="flex flex-wrap items-center gap-2 text-sm font-semibold">
+        <a href="{{ route('front.profile') }}" class="rounded-full px-4 py-2 border border-[#EEF0F7] hover:ring-2 hover:ring-[#0D3B66]">Profile</a>
+        <a href="{{ route('front.academic') }}" class="rounded-full px-4 py-2 border border-[#EEF0F7] hover:ring-2 hover:ring-[#0D3B66]">Academic</a>
+        <a href="{{ route('front.gallery') }}" class="rounded-full px-4 py-2 border border-[#EEF0F7] hover:ring-2 hover:ring-[#0D3B66]">Gallery</a>
+        <a href="{{ route('front.contact') }}" class="rounded-full px-4 py-2 border border-[#EEF0F7] hover:ring-2 hover:ring-[#0D3B66]">Contact</a>
+    </div>
+
+    <form method="GET" action="{{ route('front.search') }}"
+        class="w-full lg:w-[340px] flex items-center rounded-full border border-[#E8EBF4] p-[10px_16px] gap-[10px] focus-within:ring-2 focus-within:ring-[#0D3B66] transition-all duration-300">
+        <button type="submit" class="w-5 h-5 flex shrink-0">
+            <img src="{{ asset('assets/images/icons/search-normal.svg') }}" alt="icon" />
+        </button>
+        <input type="text" name="keyword"
+            class="appearance-none outline-none w-full font-semibold placeholder:font-normal placeholder:text-[#A3A6AE]"
+            placeholder="Search school news..." />
+    </form>
+</nav>
