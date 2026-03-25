@@ -3,8 +3,9 @@
 <body class="font-[Poppins] pb-[72px] bg-[#F8FAFC]">
     <x-navbar/>
 
-    <section class="max-w-[1130px] mx-auto mt-8">
-        <h1 class="text-3xl font-bold text-[#0D3B66]">Academic Programs</h1>
+    <section class="w-full px-4 md:px-6 mt-8">
+        <div class="max-w-[1150px] mx-auto">
+            <h1 class="text-3xl font-bold text-[#0D3B66]">Academic Programs</h1>
         <p class="mt-2 text-[#516070]">Explore curriculum and featured student achievements.</p>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-6">
@@ -19,8 +20,9 @@
         </div>
     </section>
 
-    <section class="max-w-[1130px] mx-auto mt-10">
-        <h2 class="font-bold text-2xl text-[#0D3B66] mb-4">Latest Achievements</h2>
+    <section class="w-full px-4 md:px-6 mt-10">
+        <div class="max-w-[1150px] mx-auto">
+            <h2 class="font-bold text-2xl text-[#0D3B66] mb-4">Latest Achievements</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             @forelse($achievements as $achievement)
                 <article class="bg-white rounded-2xl p-5 border border-[#E8EBF4]">
@@ -30,6 +32,9 @@
             @empty
                 <p class="text-[#6C7A89]">No achievements yet.</p>
             @endforelse
+        </div>
+    </section>
+
         </div>
     </section>
 

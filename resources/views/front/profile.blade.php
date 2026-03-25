@@ -3,8 +3,9 @@
 <body class="font-[Poppins] pb-[72px] bg-[#F8FAFC]">
     <x-navbar/>
 
-    <section class="max-w-[1130px] mx-auto mt-8 bg-white border border-[#E8EBF4] rounded-2xl p-8">
-        <h1 class="text-3xl font-bold text-[#0D3B66]">School Profile</h1>
+    <section class="w-full px-4 md:px-6 mt-8">
+        <div class="max-w-[1150px] mx-auto bg-white border border-[#E8EBF4] rounded-2xl p-8">
+            <h1 class="text-3xl font-bold text-[#0D3B66]">School Profile</h1>
         <p class="mt-3 text-[#516070]">{{ $schoolProfile?->tagline ?? 'Please complete school profile data from admin panel.' }}</p>
 
         <div class="grid md:grid-cols-2 gap-6 mt-8">
@@ -22,8 +23,9 @@
         </div>
     </section>
 
-    <section class="max-w-[1130px] mx-auto mt-10">
-        <h2 class="font-bold text-2xl text-[#0D3B66] mb-4">School Achievements</h2>
+    <section class="w-full px-4 md:px-6 mt-10">
+        <div class="max-w-[1150px] mx-auto">
+            <h2 class="font-bold text-2xl text-[#0D3B66] mb-4">School Achievements</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             @forelse($achievements as $achievement)
             <article class="bg-white rounded-2xl p-5 border border-[#E8EBF4]">
@@ -38,6 +40,9 @@
         </div>
 
         <div class="mt-6">{{ $achievements->links() }}</div>
+    </section>
+
+        </div>
     </section>
 
     <x-footer :school-profile="$schoolProfile" />

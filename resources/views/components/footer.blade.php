@@ -1,5 +1,5 @@
 @props(['schoolProfile' => null])
-<footer class="max-w-[1130px] mx-auto mt-16 border-t border-[#E8EBF4] pt-8">
+<footer class="max-w-[1150px] mx-auto mt-16 border-t border-[#E8EBF4] pt-8">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
         <div>
             <h4 class="font-bold text-[#0D3B66]">{{ $schoolProfile?->school_name ?? 'SMAK Seminari Yohanes' }}</h4>

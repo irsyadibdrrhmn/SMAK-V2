@@ -11,6 +11,8 @@ class banneradvertisement extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
+        'title',
+        'description',
         'link',
         'is_active',
         'type',

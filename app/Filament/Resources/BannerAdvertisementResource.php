@@ -23,28 +23,37 @@ class BannerAdvertisementResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('title')
+                    ->label('Slide Title')
+                    ->maxLength(255),
+
+                Forms\Components\Textarea::make('description')
+                    ->label('Slide Description')
+                    ->rows(3),
+
                 Forms\Components\TextInput::make('link')
-                ->activeUrl()
-                ->required()
-                ->maxLength(255),
+                    ->activeUrl()
+                    ->required()
+                    ->maxLength(255),
 
                 Forms\Components\FileUpload::make('thumbnail')
-                ->required()
-                ->image(),
+                    ->required()
+                    ->image(),
 
                 Forms\Components\Select::make('is_active')
-                ->options([
-                    'active' => 'Active',
-                    'not_active' => 'Not Active',
-                ])
-                ->required(),
+                    ->options([
+                        'active' => 'Active',
+                        'not_active' => 'Not Active',
+                    ])
+                    ->required(),
 
                 Forms\Components\Select::make('type')
-                ->options([
-                    'banner' => 'Banner',
-                    'square' => 'Square',
-                ]),
+                    ->options([
+                        'slider' => 'Slider',
+                        'banner' => 'Banner',
+                        'square' => 'Square',
+                    ])
+                    ->required(),
             ]);
     }
 
@@ -52,9 +61,18 @@ class BannerAdvertisementResource extends Resource
     {
         return $table
             ->columns([
-                //
-                Tables\Columns\TextColumn::make('link')
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('title')
+                    ->searchable()
+                    ->label('Title'),
+
+                Tables\Columns\TextColumn::make('type')
+                    ->badge()
+                    ->color(fn(string $state): string => match ($state) {
+                        'slider' => 'info',
+                        'banner' => 'warning',
+                        'square' => 'secondary',
+                        default => 'gray',
+                    }),
 
                 Tables\Columns\TextColumn::make('is_active')
                     ->badge()

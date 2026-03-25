@@ -1,13 +1,15 @@
-<nav id="Navbar" class="max-w-[1130px] mx-auto flex flex-wrap justify-between items-center gap-4 mt-[30px]">
-    <div class="logo-container flex gap-5 items-center">
-        <a href="{{ route('front.index') }}" class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-[#0D3B66] text-white flex items-center justify-center font-bold">SY</div>
-            <div>
-                <p class="font-bold text-[#0D3B66] leading-tight">SMAK Seminari Yohanes</p>
-                <p class="text-xs text-[#6C7A89]">School Website & News Portal</p>
+<header class="w-full bg-white shadow-sm">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-6">
+        <nav id="Navbar" class="flex flex-wrap justify-between items-center gap-4 py-4">
+            <div class="logo-container flex gap-5 items-center">
+                <a href="{{ route('front.index') }}" class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-[#0D3B66] text-white flex items-center justify-center font-bold">SY</div>
+                    <div>
+                        <p class="font-bold text-[#0D3B66] leading-tight">SMAK Seminari Yohanes</p>
+                        <p class="text-xs text-[#6C7A89]">School Website & News Portal</p>
+                    </div>
+                </a>
             </div>
-        </a>
-    </div>
 
     <div class="flex flex-wrap items-center gap-2 text-sm font-semibold">
         <a href="{{ route('front.profile') }}" class="rounded-full px-4 py-2 border border-[#EEF0F7] hover:ring-2 hover:ring-[#0D3B66]">Profile</a>
@@ -25,4 +27,6 @@
             class="appearance-none outline-none w-full font-semibold placeholder:font-normal placeholder:text-[#A3A6AE]"
             placeholder="Search school news..." />
     </form>
-</nav>
+        </nav>
+    </div>
+</header>

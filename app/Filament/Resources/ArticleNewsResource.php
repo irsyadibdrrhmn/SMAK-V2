@@ -32,18 +32,6 @@ class ArticleNewsResource extends Resource
                 ->required()
                 ->image(),
 
-                Forms\Components\Select::make('category_id')
-                ->relationship('category', 'name')
-                ->searchable()
-                ->preload()
-                ->required(),
-
-                Forms\Components\Select::make('author_id')
-                ->relationship('author', 'name')
-                ->searchable()
-                ->preload()
-                ->required(),
-
                 Forms\Components\Select::make('is_featured')
                 ->options([
                     'featured' => 'Featured',
@@ -87,8 +75,6 @@ class ArticleNewsResource extends Resource
                         'featured' => 'success',
                         'not_featured' => 'danger',
                     }),
-
-                Tables\Columns\TextColumn::make('category.name'),
 
                 Tables\Columns\ImageColumn::make('thumbnail'),
             ])

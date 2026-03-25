@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 
@@ -17,8 +16,6 @@ class articlenews extends Model
         'slug',
         'thumbnail',
         'content',
-        'category_id',
-        'author_id',
         'is_featured',
     ];
 
@@ -26,14 +23,5 @@ class articlenews extends Model
     {
         $this->attributes['name'] = $value;
         $this->attributes['slug'] = Str::slug($value);
-    }
-
-    public function category(): BelongsTo
-    {
-        return $this->belongsTo(category::class, 'category_id');
-    }
-    public function author(): BelongsTo
-    {
-        return $this->belongsTo(author::class, 'author_id');
     }
 }

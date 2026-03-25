@@ -10,6 +10,7 @@ Route::get('/gallery', [FrontController::class, 'gallery'])->name('front.gallery
 Route::get('/contact', [FrontController::class, 'contact'])->name('front.contact');
 
 Route::get('/details/{article_news:slug}', [FrontController::class, 'details'])->name('front.details');
+Route::get('/announcement/{announcement:slug}', [FrontController::class, 'announcementDetails'])->name('front.announcement');
 Route::get('/category/{category:slug}', [FrontController::class, 'category'])->name('front.category');
 Route::get('/author/{author:slug}', [FrontController::class, 'author'])->name('front.author');
 Route::get('/search', [FrontController::class, 'search'])->name('front.search');

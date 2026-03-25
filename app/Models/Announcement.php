@@ -14,6 +14,7 @@ class Announcement extends Model
         'title',
         'slug',
         'content',
+        'thumbnail',
         'publish_at',
         'is_published',
     ];
