@@ -61,6 +61,31 @@
             line-height: 1.75;
             color: #374151;
         }
+
+
+        .article-content * {
+            max-width: 100%;
+        }
+
+        .article-content > * {
+            max-width: 100% !important;
+            position: static !important;
+            left: auto !important;
+            right: auto !important;
+            inset: auto !important;
+            transform: none !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+
+        .article-content p,
+        .article-content li {
+            text-align: left;
+        }
+
+        .article-content p:empty {
+            display: none;
+        }
         .article-content h1, .article-content h2, .article-content h3,
         .article-content h4, .article-content h5, .article-content h6 {
             color: #0D3B66; font-weight: 700; margin-top: 2em; margin-bottom: 1em;

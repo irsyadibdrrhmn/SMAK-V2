@@ -12,6 +12,10 @@
             </div>
 
     <div class="flex flex-wrap items-center gap-2 text-sm font-semibold">
+        <a href="{{ route('front.index') }}" class="rounded-full px-4 py-2 border border-[#EEF0F7] hover:ring-2 hover:ring-[#0D3B66]">Home</a>
+        <a href="{{ route('front.index') }}#announcements" class="rounded-full px-4 py-2 border border-[#EEF0F7] hover:ring-2 hover:ring-[#0D3B66]">Announcements</a>
+        <a href="{{ route('front.index') }}#achievements" class="rounded-full px-4 py-2 border border-[#EEF0F7] hover:ring-2 hover:ring-[#0D3B66]">Achievements</a>
+        <a href="{{ route('front.index') }}#news" class="rounded-full px-4 py-2 border border-[#EEF0F7] hover:ring-2 hover:ring-[#0D3B66]">News</a>
         <a href="{{ route('front.profile') }}" class="rounded-full px-4 py-2 border border-[#EEF0F7] hover:ring-2 hover:ring-[#0D3B66]">Profile</a>
         <a href="{{ route('front.academic') }}" class="rounded-full px-4 py-2 border border-[#EEF0F7] hover:ring-2 hover:ring-[#0D3B66]">Academic</a>
         <a href="{{ route('front.gallery') }}" class="rounded-full px-4 py-2 border border-[#EEF0F7] hover:ring-2 hover:ring-[#0D3B66]">Gallery</a>

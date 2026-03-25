@@ -16,7 +16,7 @@
 	</header>
 	<section id="Article-container" class="w-full px-4 lg:px-6 mt-[50px]">
 		<div class="max-w-[1180px] mx-auto flex flex-col lg:flex-row gap-8 lg:gap-12">
-			<article id="Content-wrapper" class="flex-1">
+			<article id="Content-wrapper" class="flex-1 min-w-0">
 				<div class="article-content text-gray-700 leading-relaxed">
 					{!! $articleNews->content !!}
 				</div>
@@ -117,12 +117,10 @@
     <style>
         /* Article content styling */
         .article-content {
-            font-size: 1.125rem;
-            line-height: 1.75;
-            color: #374151;
-            overflow-wrap: anywhere;
-            word-break: break-word;
-        }
+    font-size: 1.125rem;
+    line-height: 1.75;
+    color: #374151;
+}
 
         .article-content h1,
         .article-content h2,
@@ -147,6 +145,20 @@
 
         .article-content * {
             max-width: 100%;
+        }
+
+
+        .article-content > * {
+    max-width: 100%;
+}
+
+        .article-content p,
+        .article-content li {
+            text-align: left;
+        }
+
+        .article-content p:empty {
+            display: none;
         }
 
         .article-content ul,

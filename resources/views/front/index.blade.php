@@ -20,7 +20,7 @@
         </div>
     </section>
 
-    <section class="w-full px-4 md:px-6 mt-10">
+    <section id="announcements" class="w-full px-4 md:px-6 mt-10">
         <div class="max-w-[1150px] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div class="lg:col-span-2 bg-white rounded-2xl p-6 border border-[#E8EBF4]">
                 <h2 class="font-bold text-2xl text-[#0D3B66]">Principal's Greeting</h2>
@@ -54,7 +54,7 @@
         </div>
     </section>
 
-    <section class="w-full px-4 md:px-6 mt-10">
+    <section id="achievements" class="w-full px-4 md:px-6 mt-10">
         <div class="max-w-[1150px] mx-auto">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="font-bold text-2xl text-[#0D3B66]">Featured Achievements</h2>
@@ -84,7 +84,7 @@
         </div>
     </section>
 
-    <section class="w-full px-4 md:px-6 mt-12">
+    <section id="news" class="w-full px-4 md:px-6 mt-12">
         <div class="max-w-[1150px] mx-auto">
             <div class="flex justify-between items-center mb-4">
                 <h2 class="font-bold text-2xl text-[#0D3B66]">School News Portal</h2>
