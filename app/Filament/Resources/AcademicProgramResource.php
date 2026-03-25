@@ -20,14 +20,16 @@ class AcademicProgramResource extends Resource
     {
         return $form
             ->schema([
-
                 Forms\Components\TextInput::make('name')->required()->maxLength(255),
-                Forms\Components\Textarea::make('description')->columnSpanFull(),
-                Forms\Components\FileUpload::make('cover')->image(),
                 Forms\Components\Select::make('is_active')->options([
                     'active' => 'Active',
                     'inactive' => 'Inactive',
                 ])->required(),
+                Forms\Components\FileUpload::make('cover')
+                    ->image()
+                    ->directory('academic-programs')
+                    ->columnSpanFull(),
+                Forms\Components\Textarea::make('description')->columnSpanFull(),
             ]);
     }
 
@@ -35,18 +37,18 @@ class AcademicProgramResource extends Resource
     {
         return $table
             ->columns([
-
                 Tables\Columns\ImageColumn::make('cover'),
                 Tables\Columns\TextColumn::make('name')->searchable(),
-                Tables\Columns\TextColumn::make('is_active')->badge(),
+                Tables\Columns\TextColumn::make('is_active')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'active' => 'success',
+                        'inactive' => 'gray',
+                    }),
                 Tables\Columns\TextColumn::make('updated_at')->dateTime()->since(),
             ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
+            ->filters([])
+            ->actions([Tables\Actions\EditAction::make()])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
@@ -54,12 +56,7 @@ class AcademicProgramResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
+    public static function getRelations(): array { return []; }
 
     public static function getPages(): array
     {

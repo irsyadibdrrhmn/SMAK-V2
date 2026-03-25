@@ -14,22 +14,24 @@ class SchoolAchievementResource extends Resource
 {
     protected static ?string $model = SchoolAchievement::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
+    protected static ?string $navigationIcon = 'heroicon-o-trophy';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-
                 Forms\Components\TextInput::make('title')->required()->maxLength(255),
-                Forms\Components\Textarea::make('description')->columnSpanFull(),
                 Forms\Components\TextInput::make('level')->maxLength(255),
                 Forms\Components\DatePicker::make('achievement_date'),
-                Forms\Components\FileUpload::make('photo')->image(),
                 Forms\Components\Select::make('is_featured')->options([
                     'featured' => 'Featured',
                     'not_featured' => 'Not Featured',
                 ])->required(),
+                Forms\Components\FileUpload::make('photo')
+                    ->image()
+                    ->directory('achievements')
+                    ->columnSpanFull(),
+                Forms\Components\Textarea::make('description')->columnSpanFull(),
             ]);
     }
 
@@ -37,19 +39,19 @@ class SchoolAchievementResource extends Resource
     {
         return $table
             ->columns([
-
                 Tables\Columns\ImageColumn::make('photo'),
                 Tables\Columns\TextColumn::make('title')->searchable(),
                 Tables\Columns\TextColumn::make('level'),
                 Tables\Columns\TextColumn::make('achievement_date')->date(),
-                Tables\Columns\TextColumn::make('is_featured')->badge(),
+                Tables\Columns\TextColumn::make('is_featured')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'featured' => 'success',
+                        'not_featured' => 'gray',
+                    }),
             ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
+            ->filters([])
+            ->actions([Tables\Actions\EditAction::make()])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
@@ -57,12 +59,7 @@ class SchoolAchievementResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
+    public static function getRelations(): array { return []; }
 
     public static function getPages(): array
     {
