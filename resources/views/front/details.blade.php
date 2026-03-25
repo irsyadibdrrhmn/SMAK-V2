@@ -120,6 +120,8 @@
             font-size: 1.125rem;
             line-height: 1.75;
             color: #374151;
+            overflow-wrap: anywhere;
+            word-break: break-word;
         }
 
         .article-content h1,
@@ -143,6 +145,10 @@
             margin-bottom: 1.5em;
         }
 
+        .article-content * {
+            max-width: 100%;
+        }
+
         .article-content ul,
         .article-content ol {
             margin-bottom: 1.5em;
@@ -159,6 +165,26 @@
             border-radius: 0.5rem;
             margin: 2em 0;
             display: block;
+        }
+
+        .article-content table {
+            display: block;
+            width: 100%;
+            overflow-x: auto;
+            margin: 1.5em 0;
+        }
+
+        .article-content pre {
+            white-space: pre-wrap;
+            overflow-x: auto;
+            background: #F3F4F6;
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .article-content iframe,
+        .article-content video {
+            max-width: 100%;
         }
 
         .article-content blockquote {

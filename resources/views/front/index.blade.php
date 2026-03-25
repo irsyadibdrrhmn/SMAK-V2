@@ -5,7 +5,7 @@
 
     <!-- Image Slider -->
     <section class="w-full px-0 mt-8">
-        <x-slider :slides="$sliderBanners" />
+        <x-slider :slides="$featured_articles" />
     </section>
 
     <section class="w-full px-4 md:px-6 mt-8">
