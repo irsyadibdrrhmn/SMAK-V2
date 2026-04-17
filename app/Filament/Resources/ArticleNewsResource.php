@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class ArticleNewsResource extends Resource
 {
     protected static ?string $model = ArticleNews::class;
-
+protected static ?string $navigationLabel = 'Berita';
     protected static ?string $navigationIcon = 'heroicon-o-newspaper';
 
     public static function form(Form $form): Form

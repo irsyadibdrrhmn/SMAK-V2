@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,12 +13,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // Menggunakan updateOrCreate agar jika email smak@admin.com sudah ada, 
+        // data lainnya akan diupdate dan tidak menyebabkan error Duplicate Entry.
+        User::updateOrCreate(
+            ['email' => 'smak@admin.com'], // Kondisi pencarian (Unique Key)
+            [
+                'name' => 'SMAK SEMINARI YOHANES PENGINJIL ASMAT',
+                'password' => Hash::make('password123'), // Jangan lupa tambahkan password jika manual
+                'email_verified_at' => now(),
+            ]
+        );
 
         $this->call([
             SchoolDataSeeder::class,

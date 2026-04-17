@@ -13,7 +13,7 @@ use Filament\Tables\Table;
 class SchoolProfileResource extends Resource
 {
     protected static ?string $model = SchoolProfile::class;
-
+protected static ?string $navigationLabel = 'Profil sekolah';
     protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
 
     public static function form(Form $form): Form

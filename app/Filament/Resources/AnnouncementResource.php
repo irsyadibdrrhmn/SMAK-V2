@@ -13,7 +13,7 @@ use Filament\Tables\Table;
 class AnnouncementResource extends Resource
 {
     protected static ?string $model = Announcement::class;
-
+    protected static ?string $navigationLabel = 'Pengumuman';
     protected static ?string $navigationIcon = 'heroicon-o-megaphone';
 
     public static function form(Form $form): Form
@@ -21,7 +21,6 @@ class AnnouncementResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('title')->required()->maxLength(255),
-                Forms\Components\TextInput::make('slug')->disabled()->dehydrated(),
                 Forms\Components\FileUpload::make('thumbnail')
                     ->image()
                     ->directory('announcements')

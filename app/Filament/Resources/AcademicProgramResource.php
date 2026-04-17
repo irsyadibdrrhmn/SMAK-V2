@@ -15,7 +15,7 @@ class AcademicProgramResource extends Resource
     protected static ?string $model = AcademicProgram::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
-
+    protected static ?string $navigationLabel = 'Program Studi';
     public static function form(Form $form): Form
     {
         return $form

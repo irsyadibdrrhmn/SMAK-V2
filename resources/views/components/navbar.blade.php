@@ -1,36 +1,219 @@
-<header class="w-full bg-white shadow-sm">
+<header class="w-full bg-white shadow-sm sticky top-0 z-50">
+
     <div class="max-w-[1200px] mx-auto px-4 md:px-6">
-        <nav id="Navbar" class="flex flex-wrap justify-between items-center gap-4 py-4">
-            <div class="logo-container flex gap-5 items-center">
-                <a href="{{ route('front.index') }}" class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-[#0D3B66] text-white flex items-center justify-center font-bold">SY</div>
-                    <div>
-                        <p class="font-bold text-[#0D3B66] leading-tight">SMAK Seminari Yohanes</p>
-                        <p class="text-xs text-[#6C7A89]">School Website & News Portal</p>
-                    </div>
+
+        <nav class="flex justify-between items-center py-4">
+
+            <!-- Logo -->
+            <a href="{{ route('front.index') }}" class="flex items-center gap-3">
+
+                <div class="w-10 h-10 rounded-full overflow-hidden">
+                    <img src="{{ asset('assets/images/logos/Logo.jpg') }}" alt="Logo Sekolah"
+                        class="w-full h-full object-cover">
+                </div>
+
+                <div class="block max-w-[180px] sm:max-w-none">
+
+                    <p class="font-bold 
+              text-[#0D3B66] 
+              text-xs sm:text-sm md:text-base 
+              leading-tight 
+              line-clamp-2">
+
+                        SMAK SEMINARI YOHANES
+                        PENGINJIL ASMAT
+
+                    </p>
+
+                    <p class="text-[10px] sm:text-xs text-[#6C7A89]">
+                        Website Sekolah & Portal Berita
+                    </p>
+
+                </div>
+
+            </a>
+
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center gap-2 text-sm font-semibold">
+
+                <a href="{{ route('front.index') }}" class="nav-link">
+                    Beranda
                 </a>
+
+                <a href="{{ route('front.index') }}#announcements" class="nav-link">
+                    Pengumuman
+                </a>
+
+                <a href="{{ route('front.index') }}#achievements" class="nav-link">
+                    Prestasi
+                </a>
+
+                <a href="{{ route('front.index') }}#news" class="nav-link">
+                    Berita
+                </a>
+
+                <a href="{{ route('front.profile') }}" class="nav-link">
+                    Profil
+                </a>
+
+                <a href="{{ route('front.academic') }}" class="nav-link">
+                    Akademik
+                </a>
+
+                <a href="{{ route('front.gallery') }}" class="nav-link">
+                    Galeri
+                </a>
+
+                <a href="{{ route('front.contact') }}" class="nav-link">
+                    Kontak
+                </a>
+
             </div>
 
-    <div class="flex flex-wrap items-center gap-2 text-sm font-semibold">
-        <a href="{{ route('front.index') }}" class="rounded-full px-4 py-2 border border-[#EEF0F7] hover:ring-2 hover:ring-[#0D3B66]">Home</a>
-        <a href="{{ route('front.index') }}#announcements" class="rounded-full px-4 py-2 border border-[#EEF0F7] hover:ring-2 hover:ring-[#0D3B66]">Announcements</a>
-        <a href="{{ route('front.index') }}#achievements" class="rounded-full px-4 py-2 border border-[#EEF0F7] hover:ring-2 hover:ring-[#0D3B66]">Achievements</a>
-        <a href="{{ route('front.index') }}#news" class="rounded-full px-4 py-2 border border-[#EEF0F7] hover:ring-2 hover:ring-[#0D3B66]">News</a>
-        <a href="{{ route('front.profile') }}" class="rounded-full px-4 py-2 border border-[#EEF0F7] hover:ring-2 hover:ring-[#0D3B66]">Profile</a>
-        <a href="{{ route('front.academic') }}" class="rounded-full px-4 py-2 border border-[#EEF0F7] hover:ring-2 hover:ring-[#0D3B66]">Academic</a>
-        <a href="{{ route('front.gallery') }}" class="rounded-full px-4 py-2 border border-[#EEF0F7] hover:ring-2 hover:ring-[#0D3B66]">Gallery</a>
-        <a href="{{ route('front.contact') }}" class="rounded-full px-4 py-2 border border-[#EEF0F7] hover:ring-2 hover:ring-[#0D3B66]">Contact</a>
+
+            <!-- Hamburger Button -->
+            <button id="hamburgerBtn"
+                class="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg border border-[#E8EBF4]">
+
+                <!-- Icon -->
+                <svg id="hamburgerIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#0D3B66]" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+
+                    <path id="iconPath" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16" />
+
+                </svg>
+
+            </button>
+
+        </nav>
+
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden pb-4 transition-all duration-300">
+
+            <div class="flex flex-col gap-2 text-sm font-semibold">
+
+                <a href="{{ route('front.index') }}" class="mobile-link">Beranda</a>
+
+                <a href="{{ route('front.index') }}#announcements" class="mobile-link">
+                    Pengumuman
+                </a>
+
+                <a href="{{ route('front.index') }}#achievements" class="mobile-link">
+                    Prestasi
+                </a>
+
+                <a href="{{ route('front.index') }}#news" class="mobile-link">
+                    Berita
+                </a>
+
+                <a href="{{ route('front.profile') }}" class="mobile-link">
+                    Profil
+                </a>
+
+                <a href="{{ route('front.academic') }}" class="mobile-link">
+                    Akademik
+                </a>
+
+                <a href="{{ route('front.gallery') }}" class="mobile-link">
+                    Galeri
+                </a>
+
+                <a href="{{ route('front.contact') }}" class="mobile-link">
+                    Kontak
+                </a>
+
+            </div>
+
+
+            <!-- Search Mobile -->
+            <form method="GET" action="{{ route('front.search') }}"
+                class="mt-4 flex items-center rounded-full border border-[#E8EBF4] p-[10px_16px] gap-[10px]">
+
+                <button type="submit" class="w-5 h-5">
+                    <img src="{{ asset('assets/images/icons/search-normal.svg') }}">
+                </button>
+
+                <input type="text" name="keyword" class="outline-none w-full" placeholder="Cari berita sekolah..." />
+
+            </form>
+
+        </div>
+
     </div>
 
-    <form method="GET" action="{{ route('front.search') }}"
-        class="w-full lg:w-[340px] flex items-center rounded-full border border-[#E8EBF4] p-[10px_16px] gap-[10px] focus-within:ring-2 focus-within:ring-[#0D3B66] transition-all duration-300">
-        <button type="submit" class="w-5 h-5 flex shrink-0">
-            <img src="{{ asset('assets/images/icons/search-normal.svg') }}" alt="icon" />
-        </button>
-        <input type="text" name="keyword"
-            class="appearance-none outline-none w-full font-semibold placeholder:font-normal placeholder:text-[#A3A6AE]"
-            placeholder="Search school news..." />
-    </form>
-        </nav>
-    </div>
+
+    <!-- STYLE -->
+    <style>
+    .nav-link {
+        padding: 8px 16px;
+        border: 1px solid #EEF0F7;
+        border-radius: 999px;
+    }
+
+    .nav-link:hover {
+        box-shadow: 0 0 0 2px #0D3B66 inset;
+    }
+
+    .mobile-link {
+        padding: 10px 16px;
+        border: 1px solid #EEF0F7;
+        border-radius: 10px;
+    }
+    </style>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+        const btn = document.getElementById("hamburgerBtn");
+        const menu = document.getElementById("mobileMenu");
+        const icon = document.getElementById("iconPath");
+        const links = document.querySelectorAll(".mobile-link");
+
+        btn.addEventListener("click", function() {
+
+            menu.classList.toggle("hidden");
+
+            // Toggle icon ☰ → ✕
+            if (menu.classList.contains("hidden")) {
+
+                icon.setAttribute(
+                    "d",
+                    "M4 6h16M4 12h16M4 18h16"
+                );
+
+            } else {
+
+                icon.setAttribute(
+                    "d",
+                    "M6 18L18 6M6 6l12 12"
+                );
+
+            }
+
+        });
+
+        // Auto close saat klik menu
+        links.forEach(link => {
+
+            link.addEventListener("click", function() {
+
+                menu.classList.add("hidden");
+
+                icon.setAttribute(
+                    "d",
+                    "M4 6h16M4 12h16M4 18h16"
+                );
+
+            });
+
+        });
+
+    });
+    </script>
+
 </header>

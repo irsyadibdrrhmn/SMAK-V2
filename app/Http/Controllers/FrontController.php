@@ -147,35 +147,42 @@ class FrontController extends Controller
         return view('front.search', compact('articles', 'keyword'));
     }
 
-    public function details(articlenews $articleNews)
-    {
-        $articles = articlenews::where('is_featured', 'not_featured')
-            ->where('id', '!=', $articleNews->id)
-            ->latest()
-            ->take(3)
-            ->get();
+    public function details(ArticleNews $articleNews)
+{
+    // Ambil berita lain secara RANDOM
+    // Saya hapus filter 'not_featured' agar semua berita berpeluang muncul
+    // Jika tetap ingin filter, pastikan datanya ada di database
+    $articles = ArticleNews::where('id', '!=', $articleNews->id)
+        ->inRandomOrder() // Mengacak berita
+        ->take(3)
+        ->get();
 
-        $bannerads = banneradvertisement::where('is_active', 'active')
-            ->where('type', 'banner')
-            ->inRandomOrder()
-            ->first();
+    // Ambil Iklan Banner
+    $bannerads = BannerAdvertisement::where('is_active', 'active')
+        ->where('type', 'banner')
+        ->inRandomOrder()
+        ->first();
 
-        $square_ads = banneradvertisement::where('type', 'square')
-            ->where('is_active', 'active')
-            ->inRandomOrder()
-            ->take(2)
-            ->get();
+    // Ambil Iklan Square (Maksimal 2)
+    $square_ads = BannerAdvertisement::where('type', 'square')
+        ->where('is_active', 'active')
+        ->inRandomOrder()
+        ->take(2)
+        ->get();
 
-        if ($square_ads->count() < 2) {
-            $square_ads_1 = $square_ads->first();
-            $square_ads_2 = $square_ads->first();
-        } else {
-            $square_ads_1 = $square_ads->get(0);
-            $square_ads_2 = $square_ads->get(1);
-        }
+    // Membagi iklan square ke variabel yang dibutuhkan di view
+    // Menggunakan null coalescing agar tidak error jika iklan tidak ada
+    $square_ads_1 = $square_ads->get(0); 
+    $square_ads_2 = $square_ads->get(1);
 
-        return view('front.details', compact('articleNews', 'articles', 'bannerads', 'square_ads_1', 'square_ads_2'));
-    }
+    return view('front.details', compact(
+        'articleNews', 
+        'articles', 
+        'bannerads', 
+        'square_ads_1', 
+        'square_ads_2'
+    ));
+}
 
     public function announcementDetails(Announcement $announcement)
     {

@@ -13,7 +13,7 @@ use Filament\Tables\Table;
 class SchoolAchievementResource extends Resource
 {
     protected static ?string $model = SchoolAchievement::class;
-
+protected static ?string $navigationLabel = 'Prestasi Sekolah';
     protected static ?string $navigationIcon = 'heroicon-o-trophy';
 
     public static function form(Form $form): Form

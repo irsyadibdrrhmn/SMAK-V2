@@ -5,8 +5,8 @@
 		<section id="heading" class="w-full px-4 md:px-6 mt-[70px]">
 			<div class="max-w-[1150px] mx-auto flex items-center flex-col gap-[30px]">
 			<h1 class="text-4xl leading-[45px] font-bold text-center">
-				Explore Hot Trending <br />
-				Good News Today
+				Jelajahi Berita Terbaru <br />
+				
 			</h1>
 			<form action="{{route('front.search')}}" method="GET">
 				<label for="search-bar" class="w-[500px] flex p-[12px_20px] transition-all duration-300 gap-[10px] ring-1 ring-[#E8EBF4] focus-within:ring-2 focus-within:ring-[#FF6B18] rounded-[50px] group">
@@ -26,7 +26,7 @@
 		</div>
 		<section id="search-result" class="w-full px-4 md:px-6 mt-[70px] mb-[100px]">
 			<div class="max-w-[1150px] mx-auto flex items-start flex-col gap-[30px]">
-			<h2 class="text-[26px] leading-[39px] font-bold">Search Result: <span>{{ucfirst($keyword)}}</span></h2>
+			<h2 class="text-[26px] leading-[39px] font-bold">Hasil Pencarian: <span>{{ucfirst($keyword)}}</span></h2>
 			<div id="search-cards" class="grid grid-cols-3 gap-[30px]">
 
                 @forelse($articles as $article)

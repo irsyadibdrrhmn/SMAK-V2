@@ -20,7 +20,7 @@
                             ?? (\Illuminate\Support\Str::limit(strip_tags($slide->content ?? ''), 140) ?: 'Unggul dalam akademik, berkarakter Injili, toleran dan kreatif');
                     @endphp
                     <h2 class="text-3xl md:text-5xl font-bold mb-3 drop-shadow-lg">
-                        {{ $slide->title ?? $slide->name ?? 'Welcome to SMAK Seminari Yohanes' }}
+                        {{ $slide->title ?? $slide->name ?? 'Selamat Datang di SMAK Seminari Yohanes' }}
                     </h2>
                     <p class="text-lg md:text-xl mb-6 max-w-2xl drop-shadow-lg">
                         {{ $slideDescription }}
@@ -35,7 +35,7 @@
             </div>
         @empty
             <div class="absolute inset-0 bg-gradient-to-r from-[#0D3B66] to-[#1a5a8a] flex items-center justify-center">
-                <p class="text-white text-2xl">No slides available</p>
+                <p class="text-white text-2xl">Tidak ada slide tersedia</p>
             </div>
         @endforelse
     </div>
@@ -43,14 +43,14 @@
     @if(count($slides) > 1)
         <!-- Navigation Arrows -->
         <button class="slider-prev absolute left-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/60 text-white p-3 rounded-full transition-all duration-300 z-10"
-                aria-label="Previous slide">
+                aria-label="Slide sebelumnya">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
             </svg>
         </button>
 
         <button class="slider-next absolute right-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/60 text-white p-3 rounded-full transition-all duration-300 z-10"
-                aria-label="Next slide">
+                aria-label="Slide berikutnya">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
@@ -61,7 +61,7 @@
             @foreach($slides as $index => $slide)
                 <button class="slider-dot w-3 h-3 rounded-full transition-all duration-300 bg-white/50 hover:bg-white"
                         data-slide-index="{{ $index }}"
-                        aria-label="Go to slide {{ $index + 1 }}"
+                        aria-label="Ke slide {{ $index + 1 }}"
                         @if($index === 0) class="slider-dot w-3 h-3 rounded-full transition-all duration-300 bg-white" @endif>
                 </button>
             @endforeach
@@ -124,7 +124,6 @@
             }, 5000);
         }
 
-        // Event Listeners
         if (prevBtn) prevBtn.addEventListener('click', prevSlide);
         if (nextBtn) nextBtn.addEventListener('click', nextSlide);
 
@@ -135,13 +134,9 @@
             });
         });
 
-        // Show first slide
         showSlide(0);
-
-        // Auto slide
         startAutoSlide();
 
-        // Pause on hover
         sliderContainer.addEventListener('mouseenter', () => clearInterval(autoSlideTimer));
         sliderContainer.addEventListener('mouseleave', startAutoSlide);
     });

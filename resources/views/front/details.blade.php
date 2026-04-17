@@ -1,306 +1,163 @@
 @extends('front.master')
+
 @section('content')
 
-<body class="font-[Poppins]">
-	<x-navbar/>
-	<header class="w-full px-4 lg:px-6 mt-[70px]">
-		<div id="Headline" class="w-full max-w-[1150px] mx-auto flex flex-col gap-4 items-center">
-			<p class="w-fit text-[#A3A6AE]">{{$articleNews->created_at->format('M d, Y')}}</p>
-			<h1 id="Title" class="font-bold text-[46px] leading-[60px] text-center two-lines">
-                {{$articleNews->name}}
-            </h1>
-		</div>
-		<div class="w-full h-[500px] flex shrink-0 overflow-hidden">
-			<img src="{{Storage::url($articleNews->thumbnail)}}" class="object-cover w-full h-full" alt="cover thumbnail">
-		</div>
-	</header>
-	<section id="Article-container" class="w-full px-4 lg:px-6 mt-[50px]">
-		<div class="max-w-[1180px] mx-auto flex flex-col lg:flex-row gap-8 lg:gap-12">
-			<article id="Content-wrapper" class="flex-1 min-w-0">
-				<div class="article-content text-gray-700 leading-relaxed">
-					{!! $articleNews->content !!}
-				</div>
-			</article>
-			<div class="side-bar flex flex-col w-full lg:w-[300px] gap-6">
-				@if($square_ads_1)
-				<div class="ads flex flex-col gap-3 w-full">
-					<a href="{{ $square_ads_1->link }}" class="block">
-						<img src="{{ Storage::url($square_ads_1->thumbnail) }}" class="w-full h-auto object-contain rounded-lg" alt="ads" />
-					</a>
-					<p class="font-medium text-sm leading-[21px] text-[#A3A6AE] flex gap-1 items-center">
-						Our Advertisement
-						<a href="#" class="w-[18px] h-[18px]">
-							<img src="{{ asset('assets/images/icons/message-question.svg') }}" alt="icon" />
-						</a>
-					</p>
-				</div>
-				@endif
-				@if($square_ads_2)
-				<div class="ads flex flex-col gap-3 w-full">
-					<a href="{{ $square_ads_2->link }}" class="block">
-						<img src="{{ Storage::url($square_ads_2->thumbnail) }}" class="w-full h-auto object-contain rounded-lg" alt="ads" />
-					</a>
-					<p class="font-medium text-sm leading-[21px] text-[#A3A6AE] flex gap-1 items-center">
-						Our Advertisement
-						<a href="#" class="w-[18px] h-[18px]">
-							<img src="{{ asset('assets/images/icons/message-question.svg') }}" alt="icon" />
-						</a>
-					</p>
-				</div>
-				@endif
-			</div>
-		</div>
-	</section>
-	@if($bannerads)
-	<section id="Advertisement" class="w-full px-4 lg:px-6 mt-[70px]">
-		<div class="max-w-[1150px] mx-auto flex justify-center">
-			<div class="flex flex-col gap-3 shrink-0 w-full lg:w-fit">
-			<a href="{{ $bannerads->link }}">
-				<div class="w-[900px] h-[120px] flex shrink-0 border border-[#EEF0F7] rounded-2xl overflow-hidden">
-					<img src="{{ Storage::url($bannerads->thumbnail) }}" class="object-cover w-full h-full" alt="ads" />
-				</div>
-			</a>
-			<p class="font-medium text-sm leading-[21px] text-[#A3A6AE] flex gap-1">
-				Our Advertisement <a href="#" class="w-[18px] h-[18px]"><img
-						src="{{ asset('assets/images/icons/message-question.svg') }}" alt="icon" /></a>
-			</p>
-			</div>
-		</div>
-	</section>
-	@endif
-	<section id="Up-to-date" class="w-full mt-[70px] py-[50px] bg-[#F9F9FC]">
-		<div class="max-w-[1150px] mx-auto px-4">
-			<div class="flex flex-col gap-[30px]">
-				<div class="flex justify-between items-center">
-					<h2 class="font-bold text-[26px] leading-[39px] text-[#0D3B66]">
-						Other News You <br class="sm:hidden" />
-						Might Be Interested
-					</h2>
-				</div>
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[30px]">
-					@forelse($articles as $article)
-					<a href="{{ route('front.details', $article->slug) }}" class="block group">
-						<div class="flex flex-col gap-4 p-[20px] transition-all duration-300 ring-1 ring-[#EEF0F7] hover:ring-2 hover:ring-[#0D3B66] rounded-[20px] overflow-hidden bg-white h-full">
-							<div class="thumbnail-container h-[180px] relative rounded-[16px] overflow-hidden">
-								<img src="{{ Storage::url($article->thumbnail) }}" alt="thumbnail photo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-							</div>
-							<div class="flex flex-col gap-[6px] flex-1">
-								<h3 class="font-bold text-lg leading-[27px] line-clamp-2 text-[#0D3B66] group-hover:text-[#0D3B66]/80">
-									{{ $article->name }}
-								</h3>
-								<p class="text-sm leading-[21px] text-[#A3A6AE] mt-auto">
-									{{ $article->created_at->format('M d, Y') }}
-								</p>
-							</div>
-						</div>
-					</a>
-					@empty
-					<div class="col-span-full text-center py-8">
-						<p class="text-[#6C7A89]">No other news available.</p>
-					</div>
-					@endforelse
-				</div>
-			</div>
-		</div>
-	</section>
+<x-navbar />
 
-</body>
+<div class="min-h-screen bg-[#FBFBFB] py-12 md:py-20">
+    <div class="max-w-5xl mx-auto px-4 lg:px-8">
+        <header class="text-center mb-12">
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <span
+                    class="px-3 py-1 bg-[#0D3B66]/10 text-[#0D3B66] text-xs font-bold uppercase tracking-widest rounded-full">
+                    Berita Terbaru
+                </span>
+                <span class="text-gray-400">|</span>
+                <p class="text-sm text-gray-500 font-medium">
+                    {{ $articleNews->created_at->format('M d, Y') }}
+                </p>
+            </div>
+
+            <h1
+                class="font-extrabold text-3xl sm:text-4xl md:text-5xl leading-[1.2] text-[#0D3B66] max-w-4xl mx-auto tracking-tight">
+                {{ $articleNews->name }}
+            </h1>
+
+            @if($articleNews->thumbnail)
+            <div
+                class="mt-10 w-full aspect-video overflow-hidden rounded-[2rem] shadow-2xl shadow-slate-200 border-8 border-white">
+                <img src="{{ Storage::url($articleNews->thumbnail) }}"
+                    class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                    alt="{{ $articleNews->name }}">
+            </div>
+            @endif
+        </header>
+
+        <section class="mt-16">
+            <div class="flex flex-col lg:flex-row gap-12">
+
+                <article class="flex-1 min-w-0">
+                    <div class="bg-white p-8 md:p-12 rounded-[2rem] shadow-sm border border-gray-100">
+                        <div class="article-content prose prose-slate max-w-none">
+                            {!! $articleNews->content !!}
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        @if($bannerads)
+        <section class="mt-20">
+            <div class="relative group">
+                <p
+                    class="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] text-gray-400 uppercase tracking-[0.2em]">
+                    Advertisement</p>
+                <a href="{{ $bannerads->link }}" class="block w-full">
+                    <div
+                        class="h-28 md:h-40 border-4 border-white rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300">
+                        <img src="{{ Storage::url($bannerads->thumbnail) }}" class="w-full h-full object-cover"
+                            alt="iklan">
+                    </div>
+                </a>
+            </div>
+        </section>
+        @endif
+
+    </div>
+
+    <section class="mt-24 border-t border-gray-50 bg-[#F8FAFC] py-24"> <div class="max-w-6xl mx-auto px-4"> <div class="flex items-end justify-between mb-12">
+            <div>
+                <h2 class="font-extrabold text-3xl md:text-4xl text-[#0D3B66] tracking-tight">
+                    Berita Lainnya
+                </h2>
+                <div class="h-1.5 w-12 bg-blue-600 rounded-full mt-2"></div> </div>
+            <a href="#" class="text-sm font-bold text-blue-600 hover:text-[#0D3B66] transition-colors flex items-center gap-1 group">
+                Lihat Semua 
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            @forelse($articles as $article)
+            <a href="{{ route('front.details', $article->slug) }}" class="group block">
+                <div class="flex flex-col h-full overflow-hidden transition-all duration-300">
+                    
+                    <div class="relative aspect-[16/10] rounded-3xl overflow-hidden mb-6 shadow-xl shadow-slate-200/50">
+                        <img src="{{ Storage::url($article->thumbnail) }}"
+                            class="w-full h-full object-cover group-hover:scale-110 group-hover:rotate-2 transition-transform duration-700"
+                            alt="{{ $article->name }}">
+                        
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="px-3 py-1 bg-white text-[#0D3B66] text-[10px] font-bold uppercase tracking-wider rounded-lg shadow-sm">
+                            {{ $article->category->name ?? 'Update' }}
+                        </span>
+                        <span class="text-[11px] text-gray-400 font-medium">
+                            {{ $article->created_at->format('M d, Y') }}
+                        </span>
+                    </div>
+
+                    <h3 class="font-extrabold text-xl text-[#0D3B66] leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                        {{ $article->name }}
+                    </h3>
+                    
+                    <p class="text-sm text-gray-500 mt-3 line-clamp-2 leading-relaxed">
+                        {{ Str::limit(strip_tags($article->content), 100) }}
+                    </p>
+                </div>
+            </a>
+            @empty
+            <div class="col-span-full py-20 text-center bg-white rounded-[2rem] border border-gray-100 shadow-sm">
+                <p class="text-gray-400 font-medium">Belum ada berita lainnya untuk ditampilkan.</p>
+            </div>
+            @endforelse
+        </div>
+    </div>
+</section>
+</div>
+
+<x-footer />
 
 @endsection
 
 @push('after-styles')
-    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet">
-
-    <style>
-        /* Article content styling */
-        .article-content {
+<style>
+/* Mengatur spacing antar paragraf di konten artikel */
+.article-content {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     font-size: 1.125rem;
-    line-height: 1.75;
-    color: #374151;
+    line-height: 1.8;
+    color: #334155;
 }
 
-        .article-content h1,
-        .article-content h2,
-        .article-content h3,
-        .article-content h4,
-        .article-content h5,
-        .article-content h6 {
-            color: #0D3B66;
-            font-weight: 700;
-            margin-top: 2em;
-            margin-bottom: 1em;
-        }
-
-        .article-content h1 { font-size: 2.25em; line-height: 2.5rem; }
-        .article-content h2 { font-size: 1.875em; line-height: 2.25rem; }
-        .article-content h3 { font-size: 1.5em; line-height: 2rem; }
-        .article-content h4 { font-size: 1.25em; line-height: 1.75rem; }
-
-        .article-content p {
-            margin-bottom: 1.5em;
-        }
-
-        .article-content * {
-            max-width: 100%;
-        }
-
-
-        .article-content > * {
-    max-width: 100%;
+.article-content p {
+    margin-bottom: 1.5rem;
 }
 
-        .article-content p,
-        .article-content li {
-            text-align: left;
-        }
+.article-content h2 {
+    font-size: 1.875rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
+    color: #0D3B66;
+}
 
-        .article-content p:empty {
-            display: none;
-        }
+.article-content blockquote {
+    background: #f1f5f9;
+    padding: 2rem;
+    border-left: 6px solid #0D3B66;
+    border-radius: 0 1rem 1rem 0;
+    font-style: italic;
+    margin: 2rem 0;
+}
 
-        .article-content ul,
-        .article-content ol {
-            margin-bottom: 1.5em;
-            padding-left: 1.5em;
-        }
-
-        .article-content li {
-            margin-bottom: 0.5em;
-        }
-
-        .article-content img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 0.5rem;
-            margin: 2em 0;
-            display: block;
-            float: none !important;
-        }
-
-        .article-content figure {
-            max-width: 100%;
-            margin: 1.5em 0;
-            float: none !important;
-        }
-
-        .article-content table {
-            display: block;
-            width: 100%;
-            overflow-x: auto;
-            margin: 1.5em 0;
-        }
-
-        .article-content pre {
-            white-space: pre-wrap;
-            overflow-x: auto;
-            background: #F3F4F6;
-            padding: 1rem;
-            border-radius: 0.5rem;
-        }
-
-        .article-content iframe,
-        .article-content video {
-            max-width: 100%;
-            float: none !important;
-        }
-
-        .article-content [style*="float"] {
-            float: none !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-        }
-
-        .article-content p,
-        .article-content h1,
-        .article-content h2,
-        .article-content h3,
-        .article-content h4,
-        .article-content h5,
-        .article-content h6,
-        .article-content ul,
-        .article-content ol {
-            clear: both;
-        }
-
-        .article-content table {
-            display: block;
-            width: 100%;
-            overflow-x: auto;
-            margin: 1.5em 0;
-        }
-
-        .article-content pre {
-            white-space: pre-wrap;
-            overflow-x: auto;
-            background: #F3F4F6;
-            padding: 1rem;
-            border-radius: 0.5rem;
-        }
-
-        .article-content iframe,
-        .article-content video {
-            max-width: 100%;
-        }
-
-        .article-content blockquote {
-            border-left: 4px solid #0D3B66;
-            padding-left: 1em;
-            margin: 2em 0;
-            font-style: italic;
-            color: #6B7280;
-            background-color: #F9FAFB;
-            padding: 1em;
-            border-radius: 0.375rem;
-        }
-
-        .article-content a {
-            color: #0D3B66;
-            text-decoration: underline;
-        }
-
-        .article-content a:hover {
-            color: #1e5a8a;
-        }
-
-        .article-content strong,
-        .article-content b {
-            font-weight: 600;
-            color: #0D3B66;
-        }
-
-        .article-content em,
-        .article-content i {
-            font-style: italic;
-        }
-
-        /* Line clamp utility */
-        .line-clamp-2 {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 1024px) {
-            #Article-container .side-bar {
-                order: -1;
-                margin-bottom: 2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .article-content { font-size: 1rem; }
-            .article-content h1 { font-size: 1.875em; line-height: 2.25rem; }
-            .article-content h2 { font-size: 1.5em; line-height: 2rem; }
-            .article-content h3 { font-size: 1.25em; line-height: 1.75rem; }
-        }
-    </style>
-@endpush
-
-@push('after-scripts')
-    <script src="js/two-lines-text.js"></script>
+/* Agar gambar di dalam konten juga cantik */
+.article-content img {
+    border-radius: 1.5rem;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+    margin: 2.5rem auto;
+}
+</style>
 @endpush

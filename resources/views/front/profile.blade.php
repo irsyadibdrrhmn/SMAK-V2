@@ -5,19 +5,19 @@
 
     <section class="w-full px-4 md:px-6 mt-8">
         <div class="max-w-[1150px] mx-auto bg-white border border-[#E8EBF4] rounded-2xl p-8">
-            <h1 class="text-3xl font-bold text-[#0D3B66]">School Profile</h1>
+            <h1 class="text-3xl font-bold text-[#0D3B66]">Profil Sekolah</h1>
             <p class="mt-3 text-[#516070]">{{ $schoolProfile?->tagline ?? 'Please complete school profile data from admin panel.' }}</p>
 
             <div class="grid md:grid-cols-2 gap-6 mt-8">
                 <div>
-                    <h2 class="font-bold text-xl text-[#0D3B66]">History</h2>
+                    <h2 class="font-bold text-xl text-[#0D3B66]">Sejarah</h2>
                     <p class="mt-2 text-[#516070] leading-relaxed">{{ $schoolProfile?->history ?? '-' }}</p>
                 </div>
                 <div>
-                    <h2 class="font-bold text-xl text-[#0D3B66]">Vision</h2>
+                    <h2 class="font-bold text-xl text-[#0D3B66]">Visi</h2>
                     <p class="mt-2 text-[#516070] leading-relaxed">{{ $schoolProfile?->vision ?? '-' }}</p>
 
-                    <h2 class="font-bold text-xl text-[#0D3B66] mt-6">Mission</h2>
+                    <h2 class="font-bold text-xl text-[#0D3B66] mt-6">Misi</h2>
                     <p class="mt-2 text-[#516070] leading-relaxed">{{ $schoolProfile?->mission ?? '-' }}</p>
                 </div>
             </div>
@@ -26,7 +26,7 @@
 
     <section class="w-full px-4 md:px-6 mt-10">
         <div class="max-w-[1150px] mx-auto">
-            <h2 class="font-bold text-2xl text-[#0D3B66] mb-4">School Achievements</h2>
+            <h2 class="font-bold text-2xl text-[#0D3B66] mb-4">Pencapaian Sekolah</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 @forelse($achievements as $achievement)
                     <article class="bg-white rounded-2xl overflow-hidden border border-[#E8EBF4]">
