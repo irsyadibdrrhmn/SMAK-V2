@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AcademicProgram;
 use App\Models\Announcement;
-use App\Models\articlenews;
+use App\Models\ArticleNews;
 use App\Models\author;
 use App\Models\banneradvertisement;
 use App\Models\category;
